@@ -1,5 +1,6 @@
 package org.zerock;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -104,7 +105,7 @@ public class Boot03ApplicationTests {
 		results.forEach(board -> System.out.println(board));
 	}
 	
-	@Test
+//	@Test
 	public void testBnoPaging() {
 		
 		Pageable paging = new PageRequest(0, 10, Sort.Direction.ASC, "bno");
@@ -120,4 +121,43 @@ public class Boot03ApplicationTests {
 		
 		list.forEach(board -> System.out.println(board));
 	}
+	
+//	@Test
+	public void testByTitle2() {
+		
+		repo.findByTitle2("17").forEach(board -> System.out.println(board));
+	}
+	
+//	@Test
+	public void testByContent2() {
+		
+		repo.findByContent2("내용 ....200").forEach(board -> System.out.println(board));
+	}
+	
+//	@Test
+	public void testByWriter2() {
+		
+		repo.findByWriter2("user00").forEach(board -> System.out.println(board));
+	}
+	
+//	@Test
+	public void testByTitle3() {
+				
+		repo.findByTitle3("17").forEach(arr -> System.out.println(Arrays.toString(arr)));
+	}
+	
+//	@Test
+	public void testByTitle4() {
+		
+		repo.findByTitle4("17").forEach(arr -> System.out.println(Arrays.toString(arr)));
+	}
+	
+	@Test
+	public void testByPaging() {
+		
+		Pageable pageable = new PageRequest(0, 10);
+		
+		repo.findByPage(pageable).forEach(board -> System.out.println(board));
+	}
+	
 }
